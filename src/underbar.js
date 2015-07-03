@@ -105,7 +105,14 @@
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
 
-    var newArray = collection - _.filter(collection, test);
+    var newArray = [];
+
+    _.each(collection, function(item, index) {
+      if (!test(item))
+      {
+        newArray.push(collection[index]);
+      }
+    });
 
     return newArray;
   };
