@@ -90,20 +90,24 @@
     var newArray = [];
 
     _.each(collection, function(item, index) {
-      if (test(item) === true)
+      if (test(item))
       {
         newArray.push(collection[index]);
       }
     });
 
     return newArray;
-    
+
   };
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+
+    var newArray = collection - _.filter(collection, test);
+
+    return newArray;
   };
 
   // Produce a duplicate-free version of the array.
@@ -116,6 +120,14 @@
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
+    var newArray = [];
+
+    for (var i = 0; i < collection.length; i++)
+      {
+        newArray.push(iterator(collection[i], i, collection));
+      }
+
+    return newArray;
   };
 
   /*
