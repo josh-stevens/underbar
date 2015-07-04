@@ -107,18 +107,23 @@
 
     var newArray = [];
 
-    _.each(collection, function(item, index) {
-      if (!test(item))
-      {
-        newArray.push(collection[index]);
+    newArray = _.filter(collection, function(item, index) {
+      if (!test(item)){
+        return true;
       }
-    });
+      else return false;
+    })
 
     return newArray;
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+
+    var newArray = [];
+
+    return newArray;
+
   };
 
 
