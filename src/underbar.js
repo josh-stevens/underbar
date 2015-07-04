@@ -122,6 +122,12 @@
 
     var newArray = [];
 
+    _.each(array, function(item) {
+      if (_.indexOf(newArray, item) < 0) {
+        newArray.push(item);
+      }
+    })
+
     return newArray;
 
   };
