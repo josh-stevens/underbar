@@ -332,16 +332,11 @@
 
     return function() {
 
-      // If result has been computed for this argument before, return that result
       if (arguments[0] in results) return results[arguments[0]];
 
-      // For new arguments, call the function with those arguments and store in result
       var result = func.apply(this, arguments);
-
-      // Push the value stored in result to the results object, using the argument as key
       results[arguments[0]] = result;
 
-      // Return the computed result as well
       return result;
     };
   };
@@ -353,6 +348,15 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    var args = [];
+    
+    for (var i=2; i < arguments.length; i++) {
+      args.push(arguments[i]);
+    }
+
+    setTimeout(function() {
+      func.apply(this, args);
+    }, wait);
   };
 
 
